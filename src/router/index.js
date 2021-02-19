@@ -27,8 +27,7 @@ const routes = [
         component: Login
       }
     ]
-  },
-  { path: '/logout', }
+  }
 ]
 
 const router = createRouter({
