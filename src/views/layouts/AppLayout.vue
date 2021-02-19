@@ -1,6 +1,6 @@
 <template>
-  <div class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-lg-show" id="sidebar">
-    <div class="c-sidebar-brand d-lg-down-none font-weight-bold">Canopy</div>
+  <div class="c-sidebar c-sidebar-fixed c-sidebar-lg-show" id="sidebar">
+    <div class="c-sidebar-brand d-lg-down-none font-weight-bold"><img src="/assets/img/canopy.svg" width="70%"></div>
     <ul class="c-sidebar-nav">
       <li class="c-sidebar-nav-item">
         <a class="c-sidebar-nav-link" href="index.html">
@@ -235,12 +235,12 @@
         </a>
       </li>
     </ul>
-    <button
+    <!-- <button
       class="c-sidebar-minimizer c-class-toggler"
       type="button"
       data-target="_parent"
       data-class="c-sidebar-minimized"
-    ></button>
+    ></button> -->
   </div>
   <div class="c-wrapper c-fixed-components">
     <header class="c-header c-header-light c-header-fixed c-header-with-subheader">
