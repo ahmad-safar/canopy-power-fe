@@ -9,10 +9,14 @@
   },
   "dependencies": {
     "@coreui/coreui": "^3.4.0",
+    "@coreui/icons": "^1.0.1",
+    "@popperjs/core": "^2.7.1",
     "axios": "^0.21.1",
     "core-js": "^3.8.3",
+    "perfect-scrollbar": "^1.5.0",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0",
+    "vue-router-layout": "^0.3.0",
     "vuex": "^4.0.0-0"
   },
   "devDependencies": {
@@ -25,7 +29,8 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^7.20.0",
     "eslint-plugin-vue": "^7.6.0",
-    "lint-staged": "^10.5.4"
+    "lint-staged": "^10.5.4",
+    "vue-svg-loader": "^0.17.0-beta.2"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
