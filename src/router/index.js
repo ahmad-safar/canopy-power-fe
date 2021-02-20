@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { createRouterLayout } from 'vue-router-layout'
 import Home from '@/views/Home.vue'
 import Login from '@/views/Login.vue'
+import Incident from '@/views/Incident.vue'
 
 // Create <RouterLayout> component.
 const RouterLayout = createRouterLayout(layout => {
@@ -25,6 +26,10 @@ const routes = [
       {
         path: 'login',
         component: Login
+      },
+      {
+        path: 'incident',
+        component: Incident
       }
     ]
   }
