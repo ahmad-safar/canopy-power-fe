@@ -31,7 +31,7 @@
                     <td>{{ incident.stop_time }}</td>
                     <td>{{ incident.status }}</td>
                     <td>
-                      <button class="btn btn-primary">Resolve</button>
+                      <button class="btn btn-primary" @click="updateIncidents(incident.id)">Resolve</button>
                     </td>
                   </tr>
                 </tbody>
@@ -54,16 +54,29 @@ export default {
   setup() {
     const incidents = ref([])
 
-    onMounted(async () => {
+    const loadIncidents = async () => {
       try {
-        const response = await api.get('/incident')
+        const response = await api('/incident')
         incidents.value = response.data.data
       } catch (err) {
         console.log(err)
       }
+    }
+
+    const updateIncidents = async (id) => {
+      try {
+        await api(`/incident?id=${id}&resolve=1`)
+        loadIncidents()
+      } catch (err) {
+        console.log(err)
+      }
+    }
+
+    onMounted(async () => {
+      loadIncidents()
     })
 
-    return { incidents }
+    return { incidents, updateIncidents }
   },
 };
 </script>
