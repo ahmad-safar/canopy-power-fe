@@ -1,7 +1,8 @@
 <template>
   <div id="sidebar" class="c-sidebar c-sidebar-fixed c-sidebar-lg-show">
     <div class="c-sidebar-brand d-lg-down-none font-weight-bold">
-      <svg width="70%"
+      <svg
+        width="70%"
         style="enable-background:new 0 0 337.8 142.7;"
         viewBox="0 0 337.8 142.7"
         y="0px"
@@ -107,19 +108,13 @@
         </a>
         <ul class="c-sidebar-nav-dropdown-items">
           <li class="c-sidebar-nav-item">
-              <router-link class="c-sidebar-nav-link" to="/incident">
-              Overview
-            </router-link>
+            <router-link class="c-sidebar-nav-link" to="/incident">Overview</router-link>
           </li>
           <li class="c-sidebar-nav-item">
-              <router-link class="c-sidebar-nav-link" to="/incident">
-              Event Log
-            </router-link>
+            <router-link class="c-sidebar-nav-link" to="/incident">Event Log</router-link>
           </li>
           <li class="c-sidebar-nav-item">
-              <router-link class="c-sidebar-nav-link" to="/incident">
-              Settings
-            </router-link>
+            <router-link class="c-sidebar-nav-link" to="/incident">Settings</router-link>
           </li>
         </ul>
       </li>
@@ -150,11 +145,13 @@
     <header class="c-header-fixed c-header-light">
       <div class="row header-top">
         <div class="col-sm-6">
-          <h3 class="title"><b>Incidents</b></h3>
+          <h3 class="title">
+            <b>Incidents</b>
+          </h3>
         </div>
         <div class="col-sm-6 timeplace">
-          <i class="cil-location-pin location"> Batu-Batu Resort</i>
-          <i class="cil-clock clock">&nbsp;{{ Timestamp }}</i> 
+          <i class="cil-location-pin location">Batu-Batu Resort</i>
+          <i class="cil-clock clock">&nbsp;{{ Timestamp }}</i>
         </div>
       </div>
       <div class="row c-header select-box">
@@ -184,16 +181,13 @@
             <option>Resolved</option>
           </select>
         </div>
-
       </div>
     </header>
     <div class="c-body">
       <main class="c-main">
         <router-view />
       </main>
-      <footer class="c-footer">
-        
-      </footer>
+      <footer class="c-footer"></footer>
     </div>
   </div>
 </template>
@@ -216,7 +210,7 @@ export default {
     const date = `${today.getDate()} ${months[today.getMonth()]}`
     let Timestamp = `${time}, ${date}`
 
-    return { logout,Timestamp}
+    return { logout, Timestamp }
   },
 };
 </script>

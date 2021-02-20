@@ -6,10 +6,14 @@
           <div class="card">
             <div class="title-header row">
               <div class="col-sm-10">
-                <h4><b>Incidents</b></h4>
+                <h4>
+                  <b>Incidents</b>
+                </h4>
               </div>
               <div class="col-sm-2" style="text-align:right">
-                  <button type="button" class="btn btn-pill btn-outline-success"> <i class="cil-reload"></i> </button>
+                <button type="button" class="btn btn-pill btn-outline-success">
+                  <i class="cil-reload"></i>
+                </button>
               </div>
             </div>
             <div class="card-body">
@@ -32,15 +36,26 @@
                     <td>{{ incident.id }}</td>
                     <td>{{ incident.severity }}</td>
                     <td>{{ incident.category }}</td>
-                    <td><pre class="normal">{{ incident.device }}</pre></td>
+                    <td>
+                      <pre class="normal">{{ incident.device }}</pre>
+                    </td>
                     <td>{{ incident.name }}</td>
                     <td>{{ incident.start_time }}</td>
                     <td>{{ incident.stop_time }}</td>
-                    <td v-if="incident.status === 'Resolved'"><span style="color:green">{{ incident.status }}</span></td>
-                    <td v-else><span style="color:red">{{ incident.status }}</span></td>
+                    <td v-if="incident.status === 'Resolved'">
+                      <span style="color:green">{{ incident.status }}</span>
+                    </td>
+                    <td v-else>
+                      <span style="color:red">{{ incident.status }}</span>
+                    </td>
 
                     <td>
-                       <i v-if="incident.status === 'Unresolved'" class="cil-check click" style="color:green" @click="updateIncidents(incident.id)"></i> 
+                      <i
+                        v-if="incident.status === 'Unresolved'"
+                        class="cil-check click"
+                        style="color:green"
+                        @click="updateIncidents(incident.id)"
+                      ></i>
                     </td>
                   </tr>
                 </tbody>
@@ -87,7 +102,7 @@ export default {
       await loadIncidents()
     })
 
-    return { incidents, updateIncidents,title }
+    return { incidents, updateIncidents, title }
   },
 };
 </script>
