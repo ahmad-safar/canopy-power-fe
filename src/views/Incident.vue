@@ -2,11 +2,18 @@
   <div class="container-fluid">
     <div class="fade-in">
       <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-12 radius">
           <div class="card">
-            <div class="card-header">Incident Overview</div>
+            <div class="title-header row">
+              <div class="col-sm-10">
+                <h4><b>Incidents</b></h4>
+              </div>
+              <div class="col-sm-2" style="text-align:right">
+                  <button type="button" class="btn btn-pill btn-outline-success"> <i class="cil-reload"></i> </button>
+              </div>
+            </div>
             <div class="card-body">
-              <table class="table table-hover table-bordered">
+              <table class="table table-hover">
                 <thead>
                   <tr>
                     <th>ID</th>
@@ -25,13 +32,15 @@
                     <td>{{ incident.id }}</td>
                     <td>{{ incident.severity }}</td>
                     <td>{{ incident.category }}</td>
-                    <td>{{ incident.device }}</td>
+                    <td><pre class="normal">{{ incident.device }}</pre></td>
                     <td>{{ incident.name }}</td>
                     <td>{{ incident.start_time }}</td>
                     <td>{{ incident.stop_time }}</td>
-                    <td>{{ incident.status }}</td>
+                    <td v-if="incident.status === 'Resolved'"><span style="color:green">{{ incident.status }}</span></td>
+                    <td v-else><span style="color:red">{{ incident.status }}</span></td>
+
                     <td>
-                      <button class="btn btn-primary" @click="updateIncidents(incident.id)">Resolve</button>
+                       <i v-if="incident.status === 'Unresolved'" class="cil-check click" style="color:green" @click="updateIncidents(incident.id)"></i> 
                     </td>
                   </tr>
                 </tbody>
@@ -49,10 +58,12 @@ import { onMounted, ref } from 'vue'
 import api from '@/api'
 
 export default {
-  name: 'Home',
+  name: 'Incidents',
   layout: 'AppLayout',
   setup() {
     const incidents = ref([])
+
+    const title = "Incidents"
 
     const loadIncidents = async () => {
       try {
@@ -73,10 +84,10 @@ export default {
     }
 
     onMounted(async () => {
-      loadIncidents()
+      await loadIncidents()
     })
 
-    return { incidents, updateIncidents }
+    return { incidents, updateIncidents,title }
   },
 };
 </script>

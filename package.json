@@ -10,6 +10,9 @@
   "dependencies": {
     "@coreui/coreui": "^3.4.0",
     "@coreui/icons": "^1.0.1",
+    "@fortawesome/fontawesome-svg-core": "^1.2.34",
+    "@fortawesome/free-solid-svg-icons": "^5.15.2",
+    "@fortawesome/vue-fontawesome": "^3.0.0-3",
     "@popperjs/core": "^2.7.1",
     "axios": "^0.21.1",
     "core-js": "^3.8.3",

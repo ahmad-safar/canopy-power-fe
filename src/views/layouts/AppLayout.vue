@@ -1,7 +1,7 @@
 <template>
   <div id="sidebar" class="c-sidebar c-sidebar-fixed c-sidebar-lg-show">
     <div class="c-sidebar-brand d-lg-down-none font-weight-bold">
-      <svg
+      <svg width="70%"
         style="enable-background:new 0 0 337.8 142.7;"
         viewBox="0 0 337.8 142.7"
         y="0px"
@@ -92,13 +92,50 @@
     </div>
     <ul class="c-sidebar-nav">
       <li class="c-sidebar-nav-item">
-        <router-link class="c-sidebar-nav-link" to="/">
+        <router-link class="c-sidebar-nav-link" to="/incident">
           <i class="c-sidebar-nav-icon cil-speedometer" /> Dashboard
         </router-link>
       </li>
       <li class="c-sidebar-nav-item">
         <router-link class="c-sidebar-nav-link" to="/incident">
-          <i class="c-sidebar-nav-icon cil-book" /> Incident Overview
+          <i class="c-sidebar-nav-icon cil-layers" /> System Info
+        </router-link>
+      </li>
+      <li class="c-sidebar-nav-item c-sidebar-nav-dropdown c-show">
+        <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle c-active" href="#">
+          <i class="c-sidebar-nav-icon cil-monitor" /> Monitoring Data
+        </a>
+        <ul class="c-sidebar-nav-dropdown-items">
+          <li class="c-sidebar-nav-item">
+              <router-link class="c-sidebar-nav-link" to="/incident">
+              Overview
+            </router-link>
+          </li>
+          <li class="c-sidebar-nav-item">
+              <router-link class="c-sidebar-nav-link" to="/incident">
+              Event Log
+            </router-link>
+          </li>
+          <li class="c-sidebar-nav-item">
+              <router-link class="c-sidebar-nav-link" to="/incident">
+              Settings
+            </router-link>
+          </li>
+        </ul>
+      </li>
+      <li class="c-sidebar-nav-item">
+        <router-link class="c-sidebar-nav-link" to="/incident">
+          <i class="c-sidebar-nav-icon cil-bar-chart" /> Analytics
+        </router-link>
+      </li>
+      <li class="c-sidebar-nav-item">
+        <router-link class="c-sidebar-nav-link" to="/incident">
+          <i class="c-sidebar-nav-icon cil-life-ring" /> Tools
+        </router-link>
+      </li>
+      <li class="c-sidebar-nav-item">
+        <router-link class="c-sidebar-nav-link" to="/incident">
+          <i class="c-sidebar-nav-icon cil-elevator" /> Switch Site
         </router-link>
       </li>
     </ul>
@@ -110,76 +147,52 @@
     ></button>-->
   </div>
   <div class="c-wrapper c-fixed-components">
-    <header class="c-header c-header-light c-header-fixed c-header-with-subheader">
-      <button
-        class="c-header-toggler c-class-toggler d-lg-none mfe-auto"
-        type="button"
-        data-target="#sidebar"
-        data-class="c-sidebar-show"
-      >
-        <i class="c-icon c-icon-lg">
-          <use href="vendors/@coreui/icons/svg/free.svg#cil-menu" />
-        </i>
-      </button>
-      <a class="c-header-brand d-lg-none" href="#">
-        <div class="c-sidebar-brand-full font-weight-bold">Canopy Power</div>
-      </a>
-      <button
-        class="c-header-toggler c-class-toggler mfs-3 d-md-down-none"
-        type="button"
-        data-target="#sidebar"
-        data-class="c-sidebar-lg-show"
-      >
-        <i class="c-icon c-icon-lg cil-menu" />
-      </button>
-      <ul class="c-header-nav d-md-down-none">
-        <li class="c-header-nav-item px-3">
-          <a class="c-header-nav-link" href="#">Dashboard</a>
-        </li>
-        <li class="c-header-nav-item px-3">
-          <a class="c-header-nav-link" href="#">Users</a>
-        </li>
-        <li class="c-header-nav-item px-3">
-          <a class="c-header-nav-link" href="#">Settings</a>
-        </li>
-      </ul>
-      <ul class="c-header-nav ml-auto mr-4">
-        <li class="c-header-nav-item dropdown">
-          <a
-            class="c-header-nav-link"
-            data-toggle="dropdown"
-            href="#"
-            role="button"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            <div class="c-avatar">
-              <img class="c-avatar-img" src="assets/img/avatars/6.jpg" alt="user@email.com" />
-            </div>
-          </a>
-          <div class="dropdown-menu dropdown-menu-right pt-0">
-            <div class="dropdown-header bg-light py-2">
-              <strong>Settings</strong>
-            </div>
-            <button class="dropdown-item" @click="logout">
-              <i class="c-icon mr-2 cil-account-logout" /> Logout
-            </button>
-          </div>
-        </li>
-      </ul>
+    <header class="c-header-fixed c-header-light">
+      <div class="row header-top">
+        <div class="col-sm-6">
+          <h3 class="title"><b>Incidents</b></h3>
+        </div>
+        <div class="col-sm-6 timeplace">
+          <i class="cil-location-pin location"> Batu-Batu Resort</i>
+          <i class="cil-clock clock">&nbsp;{{ Timestamp }}</i> 
+        </div>
+      </div>
+      <div class="row c-header select-box">
+        <div class="col-sm-2 select-container">
+          <select class="form-control form-control-lg">
+            <option>All Severities</option>
+          </select>
+        </div>
+        <div class="col-sm-2 select-container">
+          <select class="form-control form-control-lg">
+            <option>All Categories</option>
+          </select>
+        </div>
+        <div class="col-sm-2 select-container">
+          <select class="form-control form-control-lg">
+            <option>All Devices</option>
+          </select>
+        </div>
+        <div class="col-sm-2 select-container">
+          <select class="form-control form-control-lg">
+            <option>Today</option>
+          </select>
+        </div>
+        <div class="col-sm-2 select-container">
+          <select class="form-control form-control-lg">
+            <option>Unresolved</option>
+            <option>Resolved</option>
+          </select>
+        </div>
+
+      </div>
     </header>
     <div class="c-body">
       <main class="c-main">
         <router-view />
       </main>
       <footer class="c-footer">
-        <div>
-          <a href="https://coreui.io">CoreUI</a> © 2020 creativeLabs.
-        </div>
-        <div class="ml-auto">
-          Powered by&nbsp;
-          <a href="https://coreui.io/">CoreUI</a>
-        </div>
+        
       </footer>
     </div>
   </div>
@@ -194,7 +207,16 @@ export default {
       localStorage.removeItem('user')
       router.replace('/login')
     };
-    return { logout }
+
+    console.log(router.currentRoute)
+
+    const today = new Date();
+    const time = `${today.getHours()}:${today.getMinutes()}`
+    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    const date = `${today.getDate()} ${months[today.getMonth()]}`
+    let Timestamp = `${time}, ${date}`
+
+    return { logout,Timestamp}
   },
 };
 </script>
